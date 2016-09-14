@@ -1,4 +1,4 @@
-FROM vcatechnology/centos
+FROM vcatechnology/centos:7
 MAINTAINER VCA Technology <developers@vcatechnology.com>
 
 # Build-time metadata as defined at http://label-schema.org
