@@ -1,6 +1,6 @@
 # CentOS Docker CI Image
 
-This container derives from an updated base [CentOS](https://hub.docker.com/vcatechnology/centos) container
+This container derives from an updated base [CentOS](https://hub.docker.com/r/vcatechnology/centos/) container
 Additional packages, useful to development are added
 
 ## Packages
