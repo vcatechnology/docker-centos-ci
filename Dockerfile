@@ -1,26 +1,26 @@
-FROM vcatechnology/centos:latest
+FROM vcatechnology/centos
 MAINTAINER VCA Technology <developers@vcatechnology.com>
 
 # Install useful packages
-RUN yum install -y \
+RUN vca-install-package \
   python \
   git \
-  sudo 
+  sudo
 
-# grab the VCA CI Scripts
-RUN yum install -y wget && \
+# Grab the VCA CI Scripts
+RUN vca-install-package wget && \
   wget https://tool-chain.vcatechnology.com/release/vca-tool-chain-ci-scripts-latest.tar.xz && \
   tar -Jxf vca-tool-chain-ci-scripts-latest.tar.xz -C / && \
   rm vca-tool-chain-ci-scripts-latest.tar.xz && \
-  yum remove -y wget
+  vca-uninstall-package wget
 
-# create a build-server user with sudo permissions & no password
+# Create a build-server user with sudo permissions & no password
 RUN useradd -ms /bin/bash build-server && \
     echo "build-server ALL=(root) NOPASSWD:ALL" | tee -a /etc/sudoers.d/build-server && \
     echo "#includedir /etc/sudoers.d" >> /etc/sudoers && \
     chmod 755 /etc/sudoers.d && \
     chmod 0440 /etc/sudoers.d/build-server
 
-# set the build-server user as default
+# Set the build-server user as default
 WORKDIR /builds
 USER build-server
