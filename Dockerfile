@@ -12,7 +12,7 @@ RUN sed -i "s|^.*requiretty|#Defaults requiretty|" /etc/sudoers
 
 # Grab the VCA CI Scripts
 RUN vca-install-package wget && \
-  wget https://tool-chain.vcatechnology.com/release/vca-tool-chain-ci-scripts-latest.tar.xz && \
+  wget -q https://tool-chain.vcatechnology.com/release/vca-tool-chain-ci-scripts-latest.tar.xz && \
   tar -Jxf vca-tool-chain-ci-scripts-latest.tar.xz -C / && \
   rm vca-tool-chain-ci-scripts-latest.tar.xz && \
   vca-uninstall-package wget
