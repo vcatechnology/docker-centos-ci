@@ -22,9 +22,10 @@ RUN vca-install-package \
   python \
   git \
   sudo
-  
+
 # Allow sudo to run under Docker
-RUN sed -i "s|^.*requiretty|#Defaults requiretty|" /etc/sudoers
+RUN sed -i "s|^.*requiretty|#Defaults requiretty|" /etc/sudoers && \
+    sed -i 's|^\(Defaults \+ secure_path.*\)|# \1|' /etc/sudoers
 
 # Grab the VCA CI Scripts
 RUN vca-install-package wget && \
