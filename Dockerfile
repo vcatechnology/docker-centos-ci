@@ -42,5 +42,7 @@ RUN useradd -ms /bin/bash build-server && \
     chmod 0440 /etc/sudoers.d/build-server
 
 # Set the build-server user as default
-WORKDIR /builds
+RUN mkdir /mnt/builds
+WORKDIR /mnt/builds
+RUN chown build-server:build-server /mnt/builds
 USER build-server
