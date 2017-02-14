@@ -22,7 +22,8 @@ RUN vca-install-package \
   python \
   git \
   sudo \
-  openssh
+  openssh \
+  rsync
 
 # Allow sudo to run under Docker
 RUN sed -i "s|^.*requiretty|#Defaults requiretty|" /etc/sudoers && \
