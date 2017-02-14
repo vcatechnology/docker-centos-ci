@@ -21,7 +21,8 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 RUN vca-install-package \
   python \
   git \
-  sudo
+  sudo \
+  openssh
 
 # Allow sudo to run under Docker
 RUN sed -i "s|^.*requiretty|#Defaults requiretty|" /etc/sudoers && \
